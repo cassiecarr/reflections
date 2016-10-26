@@ -1,0 +1,41 @@
+%%Learned git init (create repository) and git status (status of repository)
+cassandracarr reflections $ git init
+Initialized empty Git repository in /Users/cassandracarr/Documents/version-control/reflections/.git/
+cassandracarr (master #) reflections $ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	lession_1_reflections.txt
+	lesson_2_reflections.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+%%REFLECTIONS%%
+
+What happens when you initialize a repository? Why do you need to do it?
+
+	You need to set up the repository so you can start adding commits
+
+How is the staging area different from the working directory and the repository?
+What value do you think it offers?
+
+	The staging area allows you to only add certain files to a commit that may or may
+	not be the sum of files in the working directory
+
+How can you use the staging area to make sure you have one commit per logical
+change?
+
+What are some situations when branches would be helpful in keeping your history
+organized? How would branches help?
+
+How do the diagrams help you visualize the branch structure?
+
+What is the result of merging two branches together? Why do we represent it in
+the diagram the way we do?
+
+What are the pros and cons of Git’s automatic merging vs. always doing merges
+manually?
