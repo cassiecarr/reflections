@@ -1,0 +1,96 @@
+%%Learned how to easily compare files in Mac Terminal Window
+
+%%Could easily spot type in game_new.js vs game_old.js
+
+Cassandras-MacBook-Pro-2:~ cassandracarr$ cd downloads
+Cassandras-MacBook-Pro-2:downloads cassandracarr$ diff -u game_new.js game_old.js
+--- game_new.js	2016-10-21 19:25:27.000000000 -0400
++++ game_old.js	2016-10-21 19:25:14.000000000 -0400
+@@ -4,9 +4,9 @@
+ //
+ 
+ KEY_CODES = {
+-  13: 'enter',
+   32: 'space',
+   37: 'left',
++  38: 'up',
+   39: 'right',
+   40: 'down',
+   70: 'f',
+@@ -392,7 +392,7 @@
+       this.vel.rot = 0;
+     }
+ 
+-    if (KEY_STATUS.spacr) {
++    if (KEY_STATUS.up) {
+       var rad = ((this.rot-90) * Math.PI)/180;
+       this.acc.x = 0.5 * Math.cos(rad);
+       this.acc.y = 0.5 * Math.sin(rad);
+@@ -406,7 +406,7 @@
+     if (this.delayBeforeBullet > 0) {
+       this.delayBeforeBullet -= delta;
+     }
+-    if (KEY_STATUS.enter) {
++    if (KEY_STATUS.space) {
+       if (this.delayBeforeBullet <= 0) {
+         this.delayBeforeBullet = 10;
+         for (var i = 0; i < this.bullets.length; i++) {
+@@ -919,7 +919,7 @@
+     waiting: function () {
+       Text.renderText(ipad ? 'Touch Sreen to Start' : 'Press Space to Start', 36, Game.canvasWidth/2 - 270, Game.canvasHeight/2);
+       if (KEY_STATUS.space || window.gameStart) {
+-        KEY_STATUS.space = false; // hack so we don't move right away
++        KEY_STATUS.space = false; // hack so we don't shoot right away
+         window.gameStart = false;
+         this.state = 'start';
+       }
+
+%%How to create a sublime file from command line
+Cassandras-MacBook-Pro-2:~ cassandracarr$ cd documents
+Cassandras-MacBook-Pro-2:documents cassandracarr$ cd version-control
+Cassandras-MacBook-Pro-2:version-control cassandracarr$ cd reflections
+Cassandras-MacBook-Pro-2:reflections cassandracarr$ ls
+Cassandras-MacBook-Pro-2:reflections cassandracarr$ subl lession_1_reflections.txt
+
+%%Git commands learned
+git clone - clone an existing repository
+git log - show the commits of the repository
+git diff - see differnt between two commits
+git checkout - make a previous commit active
+
+%%REFLECTIONS%%
+
+How did viewing a diff between two versions of a file help you see the bug that
+was introduced?
+
+    It was easy to compare and pin-point
+
+How could having easy access to the entire history of a file make you a more
+efficient programmer in the long term?
+
+    You could easily create new files, compare files
+
+What do you think are the pros and cons of manually choosing when to create a
+commit, like you do in Git, vs having versions automatically saved, like Google
+docs does?
+
+    You can choose your points in version history to align with changes
+
+Why do you think some version control systems, like Git, allow saving multiple
+files in one commit, while others, like Google Docs, treat each file separately?
+
+    So you can link them to certain changes
+
+How can you use the commands git log and git diff to view the history of files?
+
+    git log allows you to see all your commits
+    git diff then allows you to compare one commit to another
+
+How might using version control make you more confident to make changes that
+could break something?
+
+    You can always go back
+
+Now that you have your workspace set up, what do you want to try using Git for?
+
+    My travel blog and my phython class
