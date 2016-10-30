@@ -1,3 +1,49 @@
+%% REFLECTIONS %%
+
+What happens when you initialize a repository? Why do you need to do it?
+
+	You need to set up the repository so you can start adding commits
+
+How is the staging area different from the working directory and the repository?
+What value do you think it offers?
+
+	The staging area allows you to only add certain files to a commit that may or may
+	not be the sum of files in the working directory
+
+How can you use the staging area to make sure you have one commit per logical
+change?
+
+	You can add one file at a time to the staging area, as seperate commits
+	if the changes are unrelated.
+
+What are some situations when branches would be helpful in keeping your history
+organized? How would branches help?
+
+	Branches allow you to work on new features or experiments without affecting
+	your working version. It allows you to keep track of these features seperately
+	from the bug fixes and changes you make to the master version.
+
+How do the diagrams help you visualize the branch structure?
+
+	It allows you to see at what point the branch was created and how the branch
+	and the master have progressed with respect to each other
+
+What is the result of merging two branches together? Why do we represent it in
+the diagram the way we do?
+
+	Merging to branches allows the commit history of the two to be combined.
+	The diagram represents this by bringing the two commit histories together.
+
+What are the pros and cons of Git’s automatic merging vs. always doing merges
+manually?
+
+	Automatic merging allow for users to quickly combine a feature they have been
+	working on seperatly with their master version. The con is if there are 
+	conflicts when merging that have to be sorted out manually. This can get
+	tricky if the user is not fully aware of the commit history of both files. 
+
+%% NOTES %%
+
 %%Learned git init (create repository) and git status (status of repository)
 cassandracarr reflections $ git init
 Initialized empty Git repository in /Users/cassandracarr/Documents/version-control/reflections/.git/
@@ -25,31 +71,55 @@ nothing added to commit but untracked files present (use "git add" to track)
 %%You can use git diff --hard to reset all files in working directory and staging area
 that haven't been committed yet
 
-%%REFLECTIONS%%
+%%Learned git branch
+cassandracarr (master) asteroids $ git branch
+* master
+cassandracarr (master) asteroids $ git branch easy-mode
+cassandracarr (master) asteroids $ git branch
+  easy-mode
+* master
+cassandracarr (master) asteroids $ git checkout easy-mode
+Switched to branch 'easy-mode'
 
-What happens when you initialize a repository? Why do you need to do it?
+%%Learned git merge (merge coins into master, copy coins commit history to master)
+cassandracarr (master) asteroids $ git merge master coins
+Auto-merging game.js
+Merge made by the 'recursive' strategy.
+ game.js | 161 +++++++++++++++++++++++++++++++++++++++++++++++++++---------------------
+ 1 file changed, 115 insertions(+), 46 deletions(-)
+%%Then you can delete the old branch
+cassandracarr (master) asteroids $ git branch -d coins
+Deleted branch coins (was 354dfdd).
+%%If you need to see the difference between a commit and it's previous commit use git show
+cassandracarr (master) asteroids $ git show 3884eab839af1e82c44267484cf2945a766081f3
+commit 3884eab839af1e82c44267484cf2945a766081f3
+Author: cbuckey <caroline@udacity.com>
+Date:   Fri Apr 29 12:33:05 2011 -0700
 
-	You need to set up the repository so you can start adding commits
+    Add color
 
-How is the staging area different from the working directory and the repository?
-What value do you think it offers?
+diff --git a/game.js b/game.js
+index 18044d5..49bf5ea 100644
+--- a/game.js
++++ b/game.js
+@@ -94,6 +94,8 @@ Sprite = function () {
+ 
+   this.children = {};
+ 
+%%To view a commit history use 
+cassandracarr (master) asteroids $ git log --graph --oneline
 
-	The staging area allows you to only add certain files to a commit that may or may
-	not be the sum of files in the working directory
+%%If merge results in a conflict, the following will occur
+cassandracarr (easy-mode) asteroids $ git merge master easy-mode
+Auto-merging game.js
+CONFLICT (content): Merge conflict in game.js
+Automatic merge failed; fix conflicts and then commit the result.
+%%Open the file with the conflict and look for "<<<<"
+%%There will show the two branches and the original parent of the two
+branches, make necessary changes to resolve the conflict, save the file
+(with the special lines removed), recommit the file
 
-How can you use the staging area to make sure you have one commit per logical
-change?
 
-	You can add one file at a time to the staging area, as seperate commits
-	if the changes are unrelated.
 
-What are some situations when branches would be helpful in keeping your history
-organized? How would branches help?
 
-How do the diagrams help you visualize the branch structure?
 
-What is the result of merging two branches together? Why do we represent it in
-the diagram the way we do?
-
-What are the pros and cons of Git’s automatic merging vs. always doing merges
-manually?
